@@ -1,22 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, { useState } from 'react';
+import { ScrollView, Text, StyleSheet, Button } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AddNewBill } from './pages/AddNewBill';
+import { HomeScreen } from './pages/HomeScreen';
+import { List } from './pages/List';
+import { SecondScreen } from './pages/SecondScreen';
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+const Stack = createNativeStackNavigator()
 
 export default function App() {
-  const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
+  const [nextPage, setNextPage] = useState<boolean>(false)
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName='Home'>
+            <Stack.Screen name='Home' component={HomeScreen} />
+            <Stack.Screen name='List' component={List} />
+            <Stack.Screen name='SecondScreen' component={SecondScreen} />
+            <Stack.Screen name='AddNewBill' component={AddNewBill} options={{title: 'Dodaj rachunek'}}/>
+          </Stack.Navigator>
+        </NavigationContainer>
       </SafeAreaProvider>
     );
-  }
 }
+
+
+
