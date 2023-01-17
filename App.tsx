@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ScrollView, Text, StyleSheet, Button } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AddNewBill } from './pages/AddNewBill';
+import { CategoryPage } from './pages/CategoryPage';
 import { HomeScreen } from './pages/HomeScreen';
 import { List } from './pages/List';
 import { SecondScreen } from './pages/SecondScreen';
@@ -21,6 +22,7 @@ export default function App() {
             <Stack.Screen name='List' component={List} />
             <Stack.Screen name='SecondScreen' component={SecondScreen} />
             <Stack.Screen name='AddNewBill' component={AddNewBill} options={{title: 'Dodaj rachunek'}}/>
+            <Stack.Screen name='CategoryPage' component={CategoryPage} options={{title: 'Kategoria 1'}}/>
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

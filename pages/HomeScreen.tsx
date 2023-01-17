@@ -1,9 +1,27 @@
+import React from 'react';
 import { View, ScrollView, Text, StyleSheet, Button, FlatList } from 'react-native';
 import { Bill } from '../components/Bill';
+import { Tile } from '../components/Tile';
 import { billsList } from '../constants/bills';
 import { TBill } from '../types/Bill';
 
 export const HomeScreen = ({navigation}:any) => {
+
+    const [categories, useCategories] = React.useState<{}[]>([
+        {
+            name: 'spożywcze',
+            value: 0
+        },
+        {
+            name: 'paliwo',
+            value: 0
+        },
+        {
+            name: 'opłaty',
+            value: 0
+        }
+    ])
+
 
     const sum = () => {
         let value = 0
@@ -17,28 +35,12 @@ export const HomeScreen = ({navigation}:any) => {
 
     return (
         <ScrollView style={styles.page}>
-            <Text>Ostatnio dodane</Text>
-            <View style={styles.nav}>
-                <Button title='Bills' onPress={()=>navigation.navigate('List')}></Button>
-            </View>
-            <Text style={styles.title}>Elo byniu</Text>
-            <View style={styles.billsList}>
+            <View >
                 {
-                    billsList.map((bill:TBill, id:number) => {
-                        return (
-                            <Bill bill={bill} id={id}/>
-                        )
-                    })
+                    categories.map(category => (
+                        <Tile navigation={navigation} props={category}/>
+                    ))
                 }
-                
-            </View>
-            <View style={styles.title}>
-                <Text style={{textAlign: 'center'}}>
-                    {newSum}
-                </Text>
-            </View>
-            <View>
-                <Button title='Dodaj nowy rachunek' onPress={()=>navigation.navigate('AddNewBill')}></Button>
             </View>
         </ScrollView>
     )
@@ -46,9 +48,14 @@ export const HomeScreen = ({navigation}:any) => {
 
 const styles = StyleSheet.create({
     page: {
-      height: 100,
-      flex: 1,
-      backgroundColor: '#eaeaea',
+        padding: 20,
+        height: 100,
+        flex: 1,
+        backgroundColor: '#eaeaea',
+    },
+    row: {
+        flex: 2,
+        flexDirection: 'row',
     },
     nav: {
         flex: 1,
