@@ -2,6 +2,7 @@ import { TBill } from "./Bill";
 
 export type TCategory = {
     name: string,
-    bills?: any,
+    type: string,
     value: number,
+    bills?: TBill[],
 }

@@ -1,46 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, ScrollView, Text, StyleSheet, Button, FlatList } from 'react-native';
 import { Bill } from '../components/Bill';
 import { Tile } from '../components/Tile';
 import { billsList } from '../constants/bills';
 import { TBill } from '../types/Bill';
 import { TCategory } from '../types/Category';
+import { data } from '../constants/data';
+import { globalStyles } from '../styles/global';
+
+
+// wyświetla wszystkie miesiące z danego roku
+
 
 export const HomeScreen = ({route, navigation}:any) => {
 
-
-    const [categories, setCategories] = React.useState<TCategory[]>([
-        {
-            name: 'spożywcze',
-            value: 0
-        },
-        {
-            name: 'paliwo',
-            value: 0
-        },
-        {
-            name: 'opłaty',
-            value: 0
-        }
-    ])
-
-
-    const sum = () => {
-        let value = 0
-        for (let i = 0; i < billsList.length; i++) {
-            value += billsList[i].value
-        }
-        return value
-    }
-
-    const newSum = sum()
+    const {year} = data
 
     return (
-        <ScrollView style={styles.page}>
-            <View >
+        <ScrollView style={globalStyles.page}>
+            <View style={globalStyles.listColumn}>
                 {
-                    categories.map(category => (
-                        <Tile navigation={navigation} props={category}/>
+                    year.map((month, id) => (
+                        <Tile key={id} navigation={navigation} props={month}/>
                     ))
                 }
             </View>
@@ -49,19 +30,6 @@ export const HomeScreen = ({route, navigation}:any) => {
 }
 
 const styles = StyleSheet.create({
-    page: {
-        padding: 20,
-        height: 100,
-        flex: 1,
-        backgroundColor: '#eaeaea',
-    },
-    row: {
-        flex: 2,
-        flexDirection: 'row',
-    },
-    nav: {
-        flex: 1,
-    },
     title: {
       borderBottomColor: '#000000',
       marginTop: 16,
@@ -74,10 +42,5 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontSize: 30,
       fontWeight: 'bold',
-    },
-    billsList: {
-        flex: 10,
-        flexDirection: 'row',
-        flexWrap: 'wrap'
     }
   });

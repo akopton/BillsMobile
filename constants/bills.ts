@@ -2,39 +2,39 @@ import { TBill } from "../types/Bill"
 
 export const billsList: TBill[] = [
     {
-        title: 'castorama',
-        category: 'budowlane',
+        name: 'castorama',
+        type: 'Product',
         value: 199.99,
-        isPaid: true
+        products: []
     },
     {
-        title: 'biedronka',
-        category: 'spożywcze',
-        value: 58.99,
-        isPaid: true
+        name: 'castorama',
+        type: 'Product',
+        value: 199.99,
+        products: []
     },
     {
-        title: 'lidl',
-        category: 'spożywcze',
-        value: 109.99,
-        isPaid: true
+        name: 'castorama',
+        type: 'Product',
+        value: 199.99,
+        products: []
     },
     {
-        title: 'castorama',
-        category: 'budlowane',
-        value: 350.00,
-        isPaid: true
+        name: 'castorama',
+        type: 'Product',
+        value: 199.99,
+        products: []
     },
     {
-        title: 'żabka',
-        category: 'spożywcze',
-        value: 49.99,
-        isPaid: true
+        name: 'castorama',
+        type: 'Product',
+        value: 199.99,
+        products: []
     },
     {
-        title: 'BP',
-        category: 'paliwo',
-        value: 273.85,
-        isPaid: true
+        name: 'castorama',
+        type: 'Product',
+        value: 199.99,
+        products: []
     },
 ]

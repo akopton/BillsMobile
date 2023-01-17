@@ -1,7 +1,9 @@
+import { TProduct } from "./Product"
+
 export type TBill = {
-    title: string,
-    category?: string,
-    productsList?: [],
-    value: number,
-    isPaid: boolean
+    id: number,
+    name: string,
+    type: string,
+    value: Function,
+    products: any[]
 }

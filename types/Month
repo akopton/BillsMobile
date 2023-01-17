@@ -1,0 +1,8 @@
+import { TCategory } from '../types/Category'
+
+export type TMonth = {
+    name: string,
+    type: string,
+    value: number,
+    categories: TCategory[]
+}
