@@ -1,14 +1,19 @@
-import { View, Text } from "react-native"
+import { View, Text, ScrollView } from "react-native"
+import { Bill } from "../components/Bill"
+import { billsList } from "../constants/bills"
+import { TBill } from "../types/Bill"
 
 export const CategoryPage = ({route}:any) => {
 
     const {props} = route.params
 
     return (
-        <View>
-            <Text>
-                {props.name}
-            </Text>
-        </View>
+        <ScrollView>
+            {
+                billsList.filter(bill => bill.category === props.name).map((bill:TBill, id:number) => (
+                    <Bill bill={bill} id={id}/>
+                ))
+            }
+        </ScrollView>
     )
 }

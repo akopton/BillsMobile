@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, ScrollView, Text, StyleSheet, Button, FlatList } from 'react-native';
 import { Bill } from '../components/Bill';
 import { Tile } from '../components/Tile';
 import { billsList } from '../constants/bills';
 import { TBill } from '../types/Bill';
+import { TCategory } from '../types/Category';
 
-export const HomeScreen = ({navigation}:any) => {
+export const HomeScreen = ({route, navigation}:any) => {
 
-    const [categories, useCategories] = React.useState<{}[]>([
+
+    const [categories, setCategories] = React.useState<TCategory[]>([
         {
             name: 'spożywcze',
             value: 0
